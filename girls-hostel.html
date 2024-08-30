@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Hostel - Pitrachaya</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe0e0; /* Light pink background */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animations */
+        .background-animations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+            animation: move 20s infinite linear;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .circle2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            right: -150px;
+            animation: move 25s infinite linear;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .circle3 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: move 30s infinite linear;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        @keyframes move {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.5) translate(50px, 50px);
+            }
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e83e8c; /* Barbie pink background for header */
+            color: #fff;
+            padding: 15px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #d63384; /* Slightly darker Barbie pink */
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: #e83e8c; /* Barbie pink background */
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h2 {
+            font-size: 48px;
+            margin: 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .page-hero p {
+            font-size: 24px;
+            margin: 10px 0;
+            animation: fadeIn 2s ease 0.5s;
+        }
+
+        /* Girls Hostel Section */
+        .girls-hostel {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f78fb3, #e83e8c); /* Barbie pink gradient background */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .girls-hostel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Subtle overlay for a soft effect */
+            z-index: 1;
+        }
+
+        .girls-hostel-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .girls-hostel h2 {
+            font-size: 36px;
+            color: #ffffff; /* White text color for better contrast */
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .girls-hostel p {
+            font-size: 20px;
+            color: #fff; /* White text color for better contrast */
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease 0.5s;
+        }
+
+        /* Image Slider */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            /* height: 500px; */
+            max-width: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .nav-btn.left {
+            left: 10px;
+        }
+
+        .nav-btn.right {
+            right: 10px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Room Details */
+        .room-details {
+            font-size: 18px;
+            color: #333;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+
+        .room-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .room-details li {
+            margin-bottom: 10px;
+        }
+
+        .room-details a {
+            color: #e83e8c; /* Barbie pink */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .room-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #e83e8c; /* Barbie pink background for footer */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .footer-location {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-location a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .footer-location a:hover {
+            color: #d63384; /* Slightly darker Barbie pink */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-hero h2 {
+                font-size: 36px;
+            }
+
+            .page-hero p {
+                font-size: 20px;
+            }
+
+            .girls-hostel h2 {
+                font-size: 30px;
+            }
+
+            .girls-hostel p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pitrachaya</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="girls-hostel.html">Girls Hostel</a></li>
+                <li><a href="rental-flats.html">Rental Flats</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h2>Welcome to the Girls Hostel</h2>
+            <p>Discover the perfect accommodation for female students.</p>
+        </div>
+    </section>
+
+    <section class="girls-hostel">
+        <div class="girls-hostel-content">
+            <h2>Girls Hostel</h2>
+            <p>Our hostel offers a range of room options to suit your needs. We have 2, 3, and 4 bedded rooms available. Each room is well-furnished and provides a 
+comfortable living space for students.</p>
+
+            <div class="slider-wrapper">
+                <div class="slides">
+                    <img src="gh1.jpg" alt="Girls Hostel Room 1">
+                    <img src="gh2.jpg" alt="Girls Hostel Room 2">
+                    <img src="gh3.jpg" alt="Girls Hostel Room 3">
+                    <img src="gh4.jpg" alt="Girls Hostel Room 4">
+                    <img src="gh5.jpg" alt="Girls Hostel Room 5">
+                    <!-- Add more images as needed -->
+                </div>
+                <button class="nav-btn left" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="nav-btn right" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
+            <div class="room-details">
+                <p>Visit us at: <a href="https://www.google.com/maps?q=Pitrachaya girls hostel lucknow" target="_blank">PitrachayaGirls hostel, B-1/4 
+                    Sector 'K' Aliganj, Lucknow</a></p>
+                <h3>Room Details:</h3>
+                <ul>
+                    <li>Facilities included: Bed, table, chair, water purifier, electricity, balcony, daily washroom cleaning, property CCTV surveillance.</li>
+                    <li>2 Bedded Rooms: Comfortable and affordable.</li>
+                    <li>3 Bedded Rooms: Perfect for small groups.</li>
+                    <li>4 Bedded Rooms: Spacious and ideal for larger groups.</li>
+                </ul>
+                <p>For more information on pricing and availability, <a href="tel:+919453966546">call us</a> today!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Pitrachaya. All rights reserved.</p>
+        <div class="footer-location">
+            <p>Visit us at: <a href="https://www.google.com/maps?q=Pitrachaya girls hostel lucknow" target="_blank">PitrachayaGirls hostel, B-1/4 Sector 'K' Aliganj, 
+Lucknow</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+
+        function moveSlide(step) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.querySelectorAll('img').length;
+            slideIndex = (slideIndex + step + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>

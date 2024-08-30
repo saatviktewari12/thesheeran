@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Flats - Pitrachaya</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ADD8E6, #003366); /* Light blue to dark blue */
+            background-size: 200% 200%;
+            animation: gradientBackground 5s ease infinite; /* Faster animation */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #004080; /* Darker shade of blue */
+            color: #fff;
+            padding: 15px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #00264d;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: #004080; /* Darker shade of blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h2 {
+            font-size: 48px;
+            margin: 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .page-hero p {
+            font-size: 24px;
+            margin: 10px 0;
+            animation: fadeIn 2s ease 0.5s;
+        }
+
+        /* Rental Flats Section */
+        .rental-flats {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #99ccff, #004080); /* Light blue to dark blue */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rental-flats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        .rental-flats-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rental-flats h2 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .rental-flats p {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease 0.5s;
+        }
+
+        /* Slider Container */
+        .slider-wrapper {
+            position: relative;
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Slides */
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover Effect */
+        .slides img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            transform: translateY(-50%);
+        }
+
+        .nav-btn.left {
+            left: 0;
+        }
+
+        .nav-btn.right {
+            right: 0;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Slider Animation */
+        @keyframes slideAnimation {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        .slider:hover .slides {
+            animation-play-state: paused;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Flat Details */
+        .flat-details {
+            font-size: 18px;
+            color: #333;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flat-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .flat-details li {
+            margin-bottom: 10px;
+        }
+
+        .flat-details a {
+            color: #004080;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .flat-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #004080;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .footer-location {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer-location a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .footer-location a:hover {
+            color: #00264d;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-hero h2 {
+                font-size: 36px;
+            }
+
+            .page-hero p {
+                font-size: 20px;
+            }
+
+            .rental-flats h2 {
+                font-size: 30px;
+            }
+
+            .rental-flats p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pitrachaya</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="girls-hostel.html">Girls Hostel</a></li>
+                <li><a href="rental-flats.html">Rental Flats</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h2>Explore Our Rental Flats</h2>
+            <p>Comfortable living spaces with modern amenities.</p>
+        </div>
+    </section>
+
+    <section class="rental-flats">
+        <div class="rental-flats-content">
+            <h2>Rental Flats</h2>
+            <p>Our rental flats are perfect for families or groups. We offer spacious 2 BHK units with modern amenities and a comfortable living environment.</p>
+
+            <div class="slider-wrapper">
+                <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+                <div class="slides" id="slides">
+                    <img src="WhatsApp Image 2024-08-24 at 22.58.14_60915178.jpg" alt="Rental Flat 1">
+                    <img src="WhatsApp Image 2024-08-24 at 22.58.14_d72882c6.jpg" alt="Rental Flat 2">
+                    <img src="WhatsApp Image 2024-08-24 at 22.58.15_f33e6f9d.jpg" alt="Rental Flat 3">
+                </div>
+                <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+            </div>
+
+            <div class="flat-details">
+                <h3>Flat Details:</h3>
+                <ul>
+                    <li>Facilities included: 24x7 water supply, power backup, modular kitchen, spacious balconies, parking, security.</li>
+                    <li>2 BHK Units: Ideal for small families or shared living.</li>
+                    <li>Spacious Living: Designed with comfort and convenience in mind.</li>
+                </ul>
+                <p>For more information on pricing and availability, <a href="tel:+919453966546">call us</a> today!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Pitrachaya. All rights reserved.</p>
+        <div class="footer-location">
+            <p>Visit us at: <a href="https://www.googlemaps.com.Pitrachaya girls Hostel Lucknow" target="_blank">B-1/4 sector "K" Aliganj, Lucknow</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.getElementById('slides').children;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+
+            const newTransform = -currentSlide * 100;
+            document.getElementById('slides').style.transform = `translateX(${newTransform}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Auto-play slides every 3 seconds
+        setInterval(() => {
+            nextSlide();
+        }, 3000);
+    </script>
+</body>
+</html>
